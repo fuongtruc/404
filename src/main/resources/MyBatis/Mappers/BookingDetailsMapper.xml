@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Mappers.BookingDetailsMapper"><!-- like pakage of class -->
+	<resultMap type="BookingDetailsVO" id="bookingDetailsResult">
+		<result property="booking_details_id" column="booking_details_id" />
+		<result property="quantity" column="quantity" />
+		<result property="total_unit_price" column="total_unit_price" />
+		<result property="booking_by" column="booking_by" />
+		<result property="booking_id" column="booking_id" />
+		<result property="product_id" column="product_id" />
+	</resultMap>
+
+
+	<select id="selectAll" resultMap="bookingDetailsResult">
+		<![CDATA[
+			select * from booking_details
+		]]>
+	</select>
+	<select id="selectOne" resultMap="bookingDetailsResult"
+		parameterType="int">
+		<![CDATA[
+			select * from book where booking_details_id= #(booking_details_id);
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="BookingDetailsVO">
+		<![CDATA[
+			insert into booking (quantity , total_unit_price , booking_by , booking_id ,product_id ) 
+			values
+			(#{quantity} , #{total_unit_price},  #{booking_by} , #{booking_id});
+		]]>
+	</insert>
+	<update id="update" parameterType="BookingDetailsVO">
+		<![CDATA[
+			update booking set
+			quantity = #{quantity},
+			total_unit_price = #{total_unit_price},
+			booking_by = #{booking_by},
+			booking_id = #{booking_id},
+			product_id = #{product_id}
+			
+			where booking_details_id = #{booking_details_id}
+		]]>
+	</update>
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from booking where booking_details_id= #{booking_details_id};
+		]]>
+	</delete>
+</mapper>

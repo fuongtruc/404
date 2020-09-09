@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mappers.RoleMapper">
+	<resultMap type="RoleVO" id="roleResult">
+		<result property="role_id" column="role_id" />
+		<result property="name" column="name" />
+	</resultMap>
+	<!-- start make sql statement -->
+	<select id="selectAll" resultMap="roleResult">
+	<![CDATA[
+	SELECT * FROM role 
+	]]>
+	</select>
+	<select id="selectOne" resultMap="roleResult">
+	<![CDATA[
+	SELECT * FROM role where role_id= #{role_id}
+	]]>
+	</select>
+	<insert id="insert" parameterType="RoleVO">
+	<![CDATA[Insert into role (name) values (#{name}]]>
+	</insert>
+
+	<update id="update" parameterType="RoleVO">
+	<![CDATA[
+	update user_role set
+	name = #{name}	
+	]]>
+	</update>
+	<delete id="delete" parameterType="int">
+	<![CDATA[
+	delete role where role_id = ${role_id}
+	]]>
+	</delete>
+	<!-- end make sql statement -->
+</mapper>

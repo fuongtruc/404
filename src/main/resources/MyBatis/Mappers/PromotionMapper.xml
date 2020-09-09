@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mappers.PromotionMapper">
+	<resultMap type="PromotionVO" id="promotionResult">
+		<result property="promotion_id" column="promotion_id" />
+		<result property="title" column="title" />
+		<result property="value" column="value" />
+		<result property="valid_from" column="valid_from" />
+		<result property="valid_until" column="valid_until" />
+		<result property="active" column="active" />
+	</resultMap>
+	<!-- start make sql statement -->
+	<select id="selectAll" resultMap="promotionResult">
+	<![CDATA[
+	SELECT * FROM promotion 
+	]]>
+	</select>
+	<select id="selectOne" resultMap="promotionResult">
+	<![CDATA[
+	SELECT * FROM promotion where promotion_id= #{promotion_id}
+	]]>
+	</select>
+	<insert id="insert" parameterType="PromotionVO">
+	<![CDATA[
+	Insert into promotion (title,value,valid_from,valid_until,active) 
+	values
+	(#{title}, #{value} , #{valid_from} ,  #{valid_until} ,  #{active})]]>
+	</insert>
+	<update id="update" parameterType="PromotionVO">
+	<![CDATA[
+	update promotion set
+	title = #{title},
+	value = #{value},
+	valid_from = #{valid_from},
+	valid_until = #{valid_until},
+	active = #{active}
+	where promotion_id = #{promotion_id}
+	]]>
+	</update>
+	<delete id="delete" parameterType="int">
+	<![CDATA[
+	delete promotion where promotion_id = ${promotion_id}
+	]]>
+	</delete>
+	<!-- end make sql statement -->
+</mapper>

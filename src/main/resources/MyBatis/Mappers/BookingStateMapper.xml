@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author : Minh-->
+<mapper namespace="Mappers.BookingStateMapper"><!-- like pakage of class-->
+	<resultMap type="BookingStateVO" id="bookingStateResult">
+		<result property="booking_state_id" column="booking_state_id"/>
+		<result property="booking_state_name" column="booking_state_name"/>
+	</resultMap>
+	<select id="selectAll" resultMap="bookingStateResult">
+		<![CDATA[
+			select * from booking_state
+		]]>
+	</select>
+	<select id="selectOne" resultMap="bookingStateResult" parameterType="int">
+		<![CDATA[
+			select * from book where booking_state_id= #(booking_state_id);
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="BookingDetailsVO">
+		<![CDATA[
+			insert into booking_details (booking_state_name) 
+			values
+			(#{booking_state_name});
+		]]>
+	</insert>
+	<update id="update" parameterType="BookingStateVO">
+		<![CDATA[
+			update booking_state set
+			booking_state_name = #{booking_state_name} 	
+			where booking_state_id=#{booking_state_id};
+		]]>
+	</update>
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from booking_state where booking_state_id= #{booking_state_id};
+		]]>
+	</delete>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mappers.VendorMapper">
+	<resultMap type="VendorVO" id="vendorResult">
+		<result property="vendor_id" column="vendor_id" />
+		<result property="vendor_name" column="vendor_name" />
+	</resultMap>
+	<!-- start make sql statement -->
+	<select id="selectAll" resultMap="vendorResult">
+	<![CDATA[
+		SELECT * FROM vendors
+	]]>
+	</select>
+	<select id="selectOne" resultMap="vendorResult">
+	<![CDATA[
+	SELECT * FROM vendor where vendor_id= #{vendor_id}
+	]]>
+	</select>
+	<insert id="insert" parameterType="VendorVO">
+	<![CDATA[Insert into vendor (vendor_name,brand_id) values (#{vendor_name}, #{brand_id}]]>
+	</insert>
+	<update id="update" parameterType="VendorVO">
+	<![CDATA[
+	update vendor set
+	vendor_name = #{vendor_name},
+	brand_id = #{brand_id}
+	Where vendor_id = #{vendor_id}
+	]]>
+	</update>
+	<delete id="delete" parameterType="int">
+	<![CDATA[
+	delete vendor where vendor_id = ${vendor_id}
+	]]>
+	</delete>
+	<!-- end make sql statement -->
+</mapper>

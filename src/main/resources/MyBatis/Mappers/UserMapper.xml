@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mappers.UserMapper">
+	<resultMap type="UserVO" id="userResult">
+		<result property="user_id" column="user_id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="active" column="active" />
+		<result property="active" column="facebook_id" />
+	</resultMap>
+	
+	<!-- start make sql statement -->
+	<select id="selectAll" resultMap="userResult">
+	<![CDATA[
+	SELECT * FROM user
+	]]>
+	</select>
+	
+	<select id="selectOne" resultMap="userResult" parameterType="int">
+	<![CDATA[
+	SELECT * FROM user where user_id= #{user_id}
+	]]>
+	</select>
+	
+	<select id="selectOneName" resultMap="userResult" parameterType="String">
+	<![CDATA[
+	SELECT * FROM user where username= #{user_name}
+	]]>
+	</select>
+	
+	<select id="selectOneFB" resultMap="userResult" parameterType="String">
+	<![CDATA[
+	SELECT * FROM user where facebook_id= #{facebook_id}
+	]]>
+	</select>
+	
+	<select id="insertOne" parameterType="UserVO">
+	<![CDATA[
+	SELECT * FROM user where username= #{username}
+	]]>
+	
+	</select>
+	
+	<select id="findByName" resultMap="userResult" parameterType="String">
+	<![CDATA[
+	SELECT * FROM user where username= #{user_name}
+	]]>
+	</select>
+	
+	<insert id="insert" parameterType="UserVO">
+		<![CDATA[
+			insert into user 
+			(username,password,email,active)
+			values
+			(#{username},#{password},#{email},#{active})			
+		]]>
+	</insert>
+
+	<update id="update" parameterType="UserVO">
+	<![CDATA[
+	update user set
+	username = #{username},
+	password = #{password},
+	email = #{email},
+	active = #{active}
+	Where user_id = #{user_id}
+	]]>
+	</update>
+	<delete id="delete" parameterType="int">
+	<![CDATA[
+	delete user where user_id = ${user_id}
+	]]>
+	</delete>
+	<!-- end make sql statement -->
+</mapper>

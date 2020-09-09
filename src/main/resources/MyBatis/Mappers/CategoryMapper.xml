@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--author : Minh-->
+<mapper namespace="Mappers.CategoryMapper"><!-- like pakage of class-->
+	<resultMap type="CategoryVO" id="categoryResult">
+		<result property="category_id" column="category_id"/>
+		<result property="category_name" column="category_name"/>
+	</resultMap>
+	<select id="selectAll" resultMap="categoryResult">
+		<![CDATA[
+			select * from category
+		]]>
+	</select>
+	<select id="selectOne" resultMap="categoryResult" parameterType="int">
+		<![CDATA[
+			select * from category where category_id= #(id);
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="CategoryVO">
+		<![CDATA[
+			insert into category (category_name) 
+			value
+			(#{category_name});
+		]]>
+	</insert>
+	<update id="update" parameterType="CategoryVO">
+		<![CDATA[
+			update category set
+			category_name = #{category_name},
+			where category_id=#{category_id};
+		]]>
+	</update>
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from category where category_id= #{id};
+		]]>
+	</delete>
+</mapper>

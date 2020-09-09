@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Mappers.BookingMapper"><!-- like pakage of class -->
+	<resultMap type="BookingVO" id="bookingResult">
+		<result property="booking_id" column="booking_id" />
+		<result property="booking_date" column="booking_date" />
+		<result property="booking_date_shipped" column="booking_date_shipped" />
+		<result property="booking_by" column="booking_by" />
+		<result property="booking_state_id" column="booking_state_id" />
+		<result property="checkout_id" column="checkout_id" />
+		<result property="unit_price" column="unit_price" />
+		<result property="payment_method_id" column="payment_method_id" />
+		<result property="promotion_id" column="promotion_id" />
+		<result property="shipper_id" column="shipper_id" />
+	</resultMap>
+
+
+	<select id="selectAll" resultMap="bookingResult">
+		<![CDATA[
+			select * from booking
+		]]>
+	</select>
+	<select id="selectOne" resultMap="bookingResult"
+		parameterType="int">
+		<![CDATA[
+			select * from book where booking_id= #(booking_id);
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="BookingVO">
+		<![CDATA[
+			insert into booking (booking_date, booking_date_shipped , booking_by , booking_state_id , checkout_id , unit_price ,payment_method_id
+			, promotion_id,shipper_id) 
+			values
+			(#{booking_date} , #{booking_date_shipped},  #{booking_by} , #{booking_state_id} ,  #{checkout_id} ,  #{unit_price} , #{payment_method_id} ,
+			  #{promotion_id} , #{shipper_id});
+		]]>
+	</insert>
+	<update id="update" parameterType="BookingVO">
+		<![CDATA[
+			update booking set
+			booking_date = #{booking_date},
+			booking_date_shipped = #{booking_date_shipped},
+			booking_by = #{booking_by},
+			unit_price = #{unit_price},
+			payment_method_id = #{payment_method_id},
+			promotion_id = #{promotion_id},
+			shipper_id = #{shipper_id}
+			
+			where booking_id = #{booking_id}
+		]]>
+	</update>
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from booking where booking_id= #{booking_id};
+		]]>
+	</delete>
+</mapper>

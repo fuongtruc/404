@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- @AUTHOR Phuong -->
+<mapper namespace="Mappers.CheckoutMapper">
+ 	<resultMap type="CheckoutVO" id="checkoutResult">
+	 	<result property="checkout_id" column="checkout_id"/>
+	 	<result property="billing_address" column="billing_address"/>
+	 	<result property="phone_number" column="phone_number"/>
+	 	<result property="user_id" column="user_id"/>
+ 	
+ 	</resultMap>
+ 	<select id="selectAll" resultMap="checkoutResult">
+ 	<![CDATA[
+			select * from checkout order by checkout_id desc
+		]]>
+ 	
+ 	</select>
+ 	<select id="selectOne" resultMap="checkoutResult" parameterType="int">
+ 		<![CDATA[
+			select * from checkout where checkout_id=#{checkout_id}
+		]]>
+ 	
+ 	</select>
+ 	<update id="update" parameterType="CheckoutVO">
+ 		<![CDATA[
+			update checkout set 
+
+			billing_address=#{billing_address},
+			phone_number=#{phone_number},
+			user_id=#{user_id}
+			
+			where checkout_id = #{checkout_id}
+				
+		]]>	
+ 	
+ 	</update>
+ 	<insert id="insert" parameterType="CheckoutVO">	
+	 	<![CDATA[
+	 		insert into checkout
+	 		(billing_address,phone_number,user_id)
+	 		values
+	 		(#{billing_address},#{phone_number},#{user_id})
+		]]>	
+ 	</insert>
+ 	
+ 		<delete id="delete" parameterType="int">
+ 		<![CDATA[
+			delete from checkout where checkout_id = #{checkout_id}
+		]]>	
+		</delete>
+ 	
+ 	
+
+
+</mapper>

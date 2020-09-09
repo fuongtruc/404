@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- @AUTHOR Phuong -->
+<mapper namespace="Mappers.InvetoryMapper">
+	<resultMap type="InvetoryVO" id="invetoryResult">
+		<result property="invetory_id" column="invetory_id"/>
+		<result property="import_date" column="import_date"/>
+		<result property="import_price" column="import_price"/>
+		<result property="import_by" column="import_by"/>
+		<result property="quantiry" column="quantiry"/>
+	</resultMap>
+	 	<select id="selectAll" resultMap="invetoryResult">
+		 	<![CDATA[
+					select * from invetory order by invetory_id desc
+			]]>
+ 	
+ 		</select>
+ 		<select id="selectOne" resultMap="invetoryResult" parameterType="int">
+	 		<![CDATA[
+				select * from invetory where invetory_id = #{invetory_id}
+			]]>
+	 	
+ 		</select>
+ 		<!-- Update -->
+ 	 	<update id="update" parameterType="InvetoryVO">
+	 		<![CDATA[
+				UPDATE invetory set 
+				 import_date = #{import_date},
+				 import_price = #{import_price},
+				 import_by = #{import_by}, 
+				 quantiry = #{quantiry}
+				  where invetory_id  = #{invetory_id}
+			]]>	
+ 		</update>
+ 		
+ 		<!-- insert -->
+ 		<insert id="insert" parameterType="InvetoryVO">
+ 			<![CDATA[
+		 		insert into invetory (import_date,import_price,import_by,quantiry)
+		 		 values (#{import_date},#{import_price},#{import_by},#{quantiry})
+ 			]]>	
+
+ 		</insert>
+
+		<delete id="delete" parameterType="int">
+	 		<![CDATA[
+				delete from invetory where invetory_id = #{invetory_id}
+			]]>	
+		</delete>
+			
+
+</mapper>

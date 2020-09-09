@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- @author: Viet Anh Nguyen -->
+<mapper namespace="Mappers.ProductMapper">
+	<resultMap type="ProductVO" id="productResult">
+		<result property="product_id" column="product_id"/>
+		<result property="product_name" column="product_name"/>
+		<result property="quantity" column="quantity"/>
+		<result property="unit_price" column="unit_price"/>
+		<result property="image" column="image"/>
+		<result property="active" column="active"/>
+		<result property="brand_id" column="brand_id"/>
+		<result property="category_id" column="category_id"/>
+		<result property="invetory_id" column="invetory_id"/>
+		<result property="vendor_id" column="vendor_id"/>
+	</resultMap>
+	
+	<!-- Make SQL Statement -->
+	
+	<!-- Select All -->
+	<select id="selectAll" resultMap="productResult">
+		<![CDATA[
+			SELECT * FROM product
+		]]>
+	</select>
+	
+	<!-- Select One -->
+	<select id="selectOne" resultMap="productResult" parameterType="int">
+		<![CDATA[
+			SELECT * FROM product where product_id = #{id}
+		]]>
+	</select>
+	
+	<!-- insert | add product -->
+	<insert id="insert" parameterType="ProductVO">
+		<![CDATA[
+			INSERT INTO product (product_name,quantity,unit_price,image,active,brand_id,category_id,invetory_id,vendor_id)
+			 values 
+			 (#{product_name},#{quantity},#{unit_price},#{image},#{active},#{brand_id},#{category_id},#{invetory_id},#{vendor_id})
+		]]>
+	</insert>
+	
+	<!-- UPDATE -->
+	<update id="update" parameterType="ProductVO">
+		<![CDATA[
+			UPDATE product set 
+				product_name = #{product_name},
+				quantity = #{quantity},
+				unit_price = #{unit_price},
+				image = #{image},
+				active = #{active},
+				brand_id = #{brand_id},
+				category_id = #{category_id},
+				invetory_id = #{invetory_id},
+				vendor_id = #{vendor_id}
+				 where product_id = #{product_id}
+		]]>
+	</update>
+	
+	<!-- Delete -->
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			DELETE FROM product where product_id = #{product_id}
+		]]>
+	</delete>
+
+</mapper>

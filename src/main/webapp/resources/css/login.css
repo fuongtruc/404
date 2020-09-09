@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+.bg-img{
+    background: url('../img/img-phu-kien.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.bg-img:after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+}
+.content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    text-align: center;
+    padding: 60px 32px;
+    width: 370px;
+    transform: translate(-50%,-50%);
+    background: rgba(255,255,255,0.04);
+    box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+}
+.content header{
+    color: white;
+    font-size: 33px;
+    font-weight: 600;
+    margin: 0 0 35px 0;
+    font-family: 'Montserrat',sans-serif;
+}
+.field{
+    border: 1px solid;
+    border-radius: .5rem;
+    position: relative;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    background: rgba(255,255,255,0.94);
+}
+.field span{
+    color: #222;
+    width: 40px;
+    line-height: 45px;
+}
+.field input{
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #222;
+    font-size: 16px;
+    font-family: 'Poppins',sans-serif;
+}
+.space{
+    margin-top: 16px;
+}
+.show{
+    position: absolute;
+    right: 13px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+    display: none;
+    cursor: pointer;
+    font-family: 'Montserrat',sans-serif;
+}
+.pass-key:valid ~ .show{
+    display: block;
+}
+.pass{
+    text-align: left;
+    margin: 10px 0;
+}
+.pass a{
+    color: #C2A476;
+    text-decoration: none;
+    font-family: 'Poppins',sans-serif;
+}
+.pass:hover a{
+    text-decoration: underline;
+}
+.field input[type="submit"]{
+    background: #C2A476;
+    border-radius: .5rem;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Montserrat',sans-serif;
+}
+.field input[type="submit"]:hover{
+    background: #c7b18f;
+}
+.login{
+    color: #C2A476;
+    margin: 20px 0;
+    font-family: 'Poppins',sans-serif;
+}
+.links{
+    display: flex;
+    cursor: pointer;
+    color: white;
+    margin: 0 0 20px 0;
+}
+.facebook,.instagram{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 10px;
+}
+.facebook{
+    border-radius: .5rem;
+    text-align: center;
+    margin-left: 0;
+    background: #4267B2;
+    border: 1px solid #3e61a8;
+}
+.instagram{
+    border-radius: .5rem;
+    text-align: center;
+    background: #fff;
+    border: 1px solid;
+}
+.facebook:hover{
+    background: #3e61a8;
+}
+.instagram:hover{
+    background-color: #f9f8f2;
+}
+.links i{
+    font-size: 17px;
+}
+i span{
+    color: #000;
+    margin-left: 8px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-family: 'Poppins',sans-serif;
+}
+.signup{
+    font-size: 15px;
+    color: #C2A476;
+    font-family: 'Poppins',sans-serif;
+}
+.signup a{
+    float: right;
+    color: #C2A476;
+    text-decoration: none;
+}
+.signup a:hover{
+    text-decoration: underline;
+}		
+/*----------------------------------------------*/
+.modal-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+}
+.modal-content {
+    background-color: #000;
+    opacity: .8;
+}
+.modal-title {
+    color: #C2A476;
+}
+
+/*---------------------------------------------*/
+.fa-user:before {
+    margin-left: 10px;
+}
+
+.fa-lock:before {
+    margin-left: 10px;
+}
+
+.fa-facebook-f:before {
+    margin-left: 10px;
+}
+
+.fa-google:before {
+    color: #000;
+    margin-left: 10px;
+}
+
+.fields {
+    border: 1px;
+    border-radius: .5rem;
+    position: relative;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    background: rgba(255,255,255,0.94);
+}
+

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- class name's alias-->
+	<typeAliases>
+		<typeAlias type="tp.ktis03.notfound.vo.Booking" alias="BookingVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.BookingDetails" alias="BookingDetailsVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.BookingState" alias="BookingStateVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.Brand" alias="BrandVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.Category" alias="CategoryVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.Checkout" alias="CheckoutVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.Invetory" alias="InvetoryVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.PaymentMethod" alias="PaymentMethodVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.Product" alias="ProductVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.Promotion" alias="PromotionVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.Role" alias="RoleVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.User" alias="UserVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.UserRole" alias="UserRoleVO" />
+		<typeAlias type="tp.ktis03.notfound.vo.Vendor" alias="VendorVO" />
+		
+		<!-- DTO -->
+		<typeAlias type="tp.ktis03.notfound.dto.UserRoleDto" alias="UserRoleDtoVO" />
+		<typeAlias type="tp.ktis03.notfound.dto.BrandDto" alias="BrandDtoVO" />
+		<!--  -->
+		
+	</typeAliases>
+	<!--config DB connection -->
+	<environments default = "development">
+		<environment id = "development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED"> 
+				<property name="driver" value="org.mariadb.jdbc.Driver" />
+				<property name="url" value="jdbc:mariadb://192.168.123.13:3306/accessoriesdb" />
+				<property name="username" value="root" />
+				<property name="password" value="123456" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- mapper for each table -->
+	<mappers>
+		<mapper resource = "MyBatis/Mappers/BookingMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/BookingDetailsMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/BookingStateMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/BrandMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/CategoryMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/CheckoutMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/InvetoryMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/PaymentMethodMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/ProductMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/PromotionMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/RoleMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/UserMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/UserRoleMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/VendorMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/UserRoleDtoMapper.xml"/>
+		<mapper resource = "MyBatis/Mappers/BrandDtoMapper.xml"/>
+	</mappers>
+</configuration>

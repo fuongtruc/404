@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mappers.BrandDtoMapper">
+	<resultMap type="BrandDtoVO" id="brandDtoResult">
+		<result property="brand_id" column="brand_id" />
+		<result property="brand_name" column="brand_name" />
+		<result property="vendor_id" column="vendor_id" />
+		<result property="vendor_name" column="vendor_name" />
+	</resultMap>
+	
+	<select id="selectAll" resultMap="brandDtoResult">
+		<![CDATA[
+		select * 
+		from brands b,vendors v 
+		WHERE b.vendor_id=v.vendor_id
+		]]>
+	</select>
+	<select id="selectALLIdVendor" resultMap="brandDtoResult" parameterType="int">
+		<![CDATA[
+			select * from brands where vendor_id= #{id_brand};
+		]]>
+	</select>
+	
+	<select id="selectOne" resultMap="brandDtoResult" parameterType="int">
+		<![CDATA[
+		SELECT * FROM brands where vendor_id= #{vendor_id}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="BrandDtoVO">
+		<![CDATA[
+			Insert into brands (brand_id,brand_name,vendor_id) 
+			values 
+			(#{brand_id}, #{brand_name}, #{vendor_id})]]>
+	</insert>
+
+	<update id="update" parameterType="BrandDtoVO">
+		<![CDATA[
+		update brands set brand_name = #{brand_name},
+		vendor_id = #{vendor_id} Where brand_id = #{brand_id}
+		]]>
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+		delete brands where brand_id = #{brand_id}
+		]]>
+	
+	</delete>
+	
+</mapper>
